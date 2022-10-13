@@ -82,19 +82,3 @@ Houveram algumas tentativas de paralelizar os metodos getMajorityLabel() e print
 
 # Repositório original: https://github.com/bowbowbow/DecisionTree
 
-
-#pragma omp parallel for
-		for (int i = 0; i < initialTable.attrValueList[selectedAttrIndex].size(); i++)
-		{
-			string attrValue = initialTable.attrValueList[selectedAttrIndex][i];
-
-			Table nextTable;
-			vector<int> candi = attrValueMap[attrValue];
-
-			#pragma omp critical
-			{
-				for (int i = 0; i < candi.size(); i++)
-				{
-					nextTable.data.push_back(table.data[candi[i]]);
-				}
-			}
